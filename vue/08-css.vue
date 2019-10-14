@@ -6,7 +6,6 @@
 
 <script>
   export default {
-    name: 'ReverseCss',
     props: ['original']
   }
 </script>

@@ -1,17 +1,17 @@
 <template>
-  <p v-reversed="original" />
+  <p>{{ original }}</p>
 </template>
 
 <script>
   import reverse from './reverse-function.js'
 
   export default {
-    name: 'ReverseDirective',
     props: ['original'],
-    directives: {
-      reversed (element, {value}) {
-        element.innerHTML = reverse(value)
-      }
+    mounted () {
+      this.$el.innerHTML = reverse(this.original)
+    },
+    updated () {
+      this.$el.innerHTML = reverse(this.original)
     }
   }
 </script>

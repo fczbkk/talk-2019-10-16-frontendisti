@@ -1,15 +1,16 @@
 <template>
-  <p>{{ original | reverse }}</p>
+  <p>{{ reversed }}</p>
 </template>
 
 <script>
   import reverse from './reverse-function.js'
 
   export default {
-    name: 'ReverseFilter',
     props: ['original'],
-    filters: {
-      reverse
+    computed: {
+      reversed () {
+        return reverse(this.original)
+      }
     }
   }
 </script>

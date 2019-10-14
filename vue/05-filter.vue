@@ -3,11 +3,13 @@
 </template>
 
 <script>
-  import reverseMixin from './reverse-mixin.js'
+  import reverse from './reverse-function.js'
 
   export default {
-    name: 'ReverseMixin',
-    mixins: [reverseMixin]
+    props: ['original'],
+    filters: {
+      reverse
+    }
   }
 </script>
 

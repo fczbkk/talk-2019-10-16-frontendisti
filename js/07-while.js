@@ -1,4 +1,4 @@
-module.exports = function reverse (input) {
+module.exports = function (input) {
   let output = ''
   let pointer = input.length
 

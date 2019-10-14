@@ -4,57 +4,46 @@
     <h1>Reverse text</h1>
     <p><input v-model="original" /></p>
 
-    <h2>function</h2>
-    <reverse-function :original="original" />
+    <h2>{{ selected.label }}</h2>
+    <component :is="selected.component" :original="original" />
 
-    <h2>lifecycle</h2>
-    <reverse-lifecycle :original="original" />
-
-    <h2>method</h2>
-    <reverse-method :original="original" />
-
-    <h2>computed</h2>
-    <reverse-computed :original="original" />
-
-    <h2>filter</h2>
-    <reverse-filter :original="original" />
-
-    <h2>mixin</h2>
-    <reverse-mixin :original="original" />
-
-    <h2>directive</h2>
-    <reverse-directive :original="original" />
-
-    <h2>css</h2>
-    <reverse-css :original="original" />
+    <div v-for="(val, index) of componentsList" :key="index">
+      <label>
+        <input type="radio" :value="val" v-model="selected" />
+        {{ val.label }}
+      </label>
+    </div>
 
   </div>
 </template>
 
 <script>
-  import ReverseFunction from './vue/function.vue'
-  import ReverseMethod from './vue/method.vue'
-  import ReverseComputed from './vue/computed.vue'
-  import ReverseFilter from './vue/filter.vue'
-  import ReverseMixin from './vue/mixin.vue'
-  import ReverseLifecycle from './vue/lifecycle'
-  import ReverseDirective from './vue/directive'
-  import ReverseCss from './vue/css'
+  import ReverseFunction from './vue/01-function.vue'
+  import ReverseLifecycle from './vue/02-lifecycle.vue'
+  import ReverseMethod from './vue/03-method.vue'
+  import ReverseComputed from './vue/04-computed.vue'
+  import ReverseFilter from './vue/05-filter.vue'
+  import ReverseMixin from './vue/06-mixin.vue'
+  import ReverseDirective from './vue/07-directive.vue'
+  import ReverseCss from './vue/08-css.vue'
+
+  const componentsList = [
+    { label: 'function', component: ReverseFunction },
+    { label: 'lifecycle', component: ReverseLifecycle },
+    { label: 'method', component: ReverseMethod },
+    { label: 'computed', component: ReverseComputed },
+    { label: 'filter', component: ReverseFilter },
+    { label: 'mixin', component: ReverseMixin },
+    { label: 'directive', component: ReverseDirective },
+    { label: 'css', component: ReverseCss },
+  ]
 
   export default {
-    components: {
-      ReverseCss,
-      ReverseDirective,
-      ReverseLifecycle,
-      ReverseMixin,
-      ReverseFilter,
-      ReverseComputed,
-      ReverseMethod,
-      ReverseFunction
-    },
     data () {
       return {
-        original: 'Riki Fridrich'
+        original: 'Riki Fridrich',
+        selected: componentsList[0],
+        componentsList
       }
     }
   }

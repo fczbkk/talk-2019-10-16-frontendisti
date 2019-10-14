@@ -1,16 +1,15 @@
 <template>
-  <p>{{ reversed }}</p>
+  <p v-reversed="original" />
 </template>
 
 <script>
   import reverse from './reverse-function.js'
 
   export default {
-    name: 'ReverseComputed',
     props: ['original'],
-    computed: {
-      reversed () {
-        return reverse(this.original)
+    directives: {
+      reversed (element, {value}) {
+        element.innerHTML = reverse(value)
       }
     }
   }

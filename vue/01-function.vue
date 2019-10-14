@@ -6,7 +6,6 @@
   import reverse from './reverse-function.js'
 
   export default {
-    name: 'ReverseFunction',
     props: ['original'],
     data () {
       return {
